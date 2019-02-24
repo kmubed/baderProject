@@ -21,7 +21,7 @@ class Donations {
     var DateOfUpload : String = ""
     var Id_of_Needy : Int = 0
     
-    //    init(_ dictionary: [String: Any]) {
+    //    init(_ dictionary: [String: Any]) { 
     //
     //        self.DonationId = dictionary["DonationId"] as? Int ?? 0
     //        self.name = dictionary["name"] as? String ?? ""
