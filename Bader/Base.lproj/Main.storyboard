@@ -40,7 +40,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3810" y="1549"/>
+            <point key="canvasLocation" x="-3428" y="1494"/>
         </scene>
         <!--LoginVC-->
         <scene sceneID="sYf-85-ADF">
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CS5-J0-ufd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3428" y="-129"/>
+            <point key="canvasLocation" x="-3410" y="-68"/>
         </scene>
         <!--SignupVC-->
         <scene sceneID="Ho9-cW-w9I">
@@ -347,7 +347,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anP-45-k2k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3810" y="743"/>
+            <point key="canvasLocation" x="-3410" y="742"/>
         </scene>
         <!--Display DonationsVC-->
         <scene sceneID="Rfz-dz-VUO">
@@ -358,7 +358,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FRQ-tj-1vi">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="123" width="375" height="544"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -409,6 +409,14 @@
                                     <outlet property="delegate" destination="hLY-j3-YfB" id="GyO-2i-iNb"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBe-sZ-ZJj">
+                                <rect key="frame" x="16" y="64" width="343" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="كل الاعلانات"/>
+                                <connections>
+                                    <action selector="changeType:" destination="hLY-j3-YfB" eventType="touchUpInside" id="BVs-aC-U2C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="j7Z-0P-W7I"/>
@@ -419,12 +427,13 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="TableViewData" destination="FRQ-tj-1vi" id="bjM-cR-Soh"/>
+                        <outlet property="donationType" destination="qBe-sZ-ZJj" id="oQ3-OV-Ztf"/>
                         <outlet property="menuBarItem" destination="fiL-YH-xnv" id="dtK-lT-6we"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LbV-7j-e9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1638" y="1494"/>
+            <point key="canvasLocation" x="-1639.2" y="1493.7031484257873"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="sGL-MZ-0Bb">
@@ -536,20 +545,6 @@
             </objects>
             <point key="canvasLocation" x="-1638" y="2167"/>
         </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="59u-eH-eK3">
-            <objects>
-                <tabBarController storyboardIdentifier="AfterLogin" id="PQ9-oR-h6E" customClass="TabBarController" customModule="Bader" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xc3-nc-qjD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ciB-b7-kMi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="873" y="-166"/>
-        </scene>
         <!--My OrdersVC-->
         <scene sceneID="acb-1L-CfV">
             <objects>
@@ -559,7 +554,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="137" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XaN-T2-Uff">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -633,7 +628,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LIs-C4-hlJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-126" y="1494"/>
+            <point key="canvasLocation" x="-127.2" y="1493.7031484257873"/>
         </scene>
         <!--My DonationsVC-->
         <scene sceneID="NPs-Oe-2Te">
@@ -644,7 +639,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="120" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pzd-MX-cWX">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -718,7 +713,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4V2-bt-ZrZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="1494"/>
+            <point key="canvasLocation" x="1293.5999999999999" y="1493.7031484257873"/>
         </scene>
         <!--Add DonationVC-->
         <scene sceneID="Pp5-rE-tlo">
@@ -1126,7 +1121,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="140" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="jgv-c2-gQ1">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -1230,7 +1225,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vHC-B4-l8N" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="610" y="1494"/>
+            <point key="canvasLocation" x="608.79999999999995" y="1493.7031484257873"/>
         </scene>
         <!--Display CharityVC-->
         <scene sceneID="cQw-85-jew">
@@ -1476,7 +1471,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sBw-k3-8jy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-146" y="-1558"/>
+            <point key="canvasLocation" x="-3990" y="-838"/>
         </scene>
         <!--My Orders DetailsaVC-->
         <scene sceneID="iHD-FT-dFA">
@@ -1886,7 +1881,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v3A-7q-Rvy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2337" y="1494"/>
+            <point key="canvasLocation" x="-2519" y="1494"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0MD-v1-cHC">
@@ -1904,7 +1899,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0jf-yv-shj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2338" y="742"/>
+            <point key="canvasLocation" x="-2519" y="743"/>
         </scene>
         <!--Reveal View Controller-->
         <scene sceneID="l5H-ef-ftg">
@@ -1918,7 +1913,7 @@
                     </view>
                     <connections>
                         <segue destination="b6G-bW-gEm" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegueSetController" id="y4x-X0-YGR"/>
-                        <segue destination="Lwt-tv-QfT" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="W2F-nC-aUY"/>
+                        <segue destination="bt6-Ra-hdL" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegueSetController" id="dMu-fu-5dM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbI-5b-hET" sceneMemberID="firstResponder"/>
@@ -2133,6 +2128,6 @@
         <segue reference="xEr-jT-TfG"/>
         <segue reference="pTs-vg-Kf0"/>
         <segue reference="3Cm-st-plh"/>
-        <segue reference="3Ya-O4-TDL"/>
+        <segue reference="ITO-hJ-A87"/>
     </inferredMetricsTieBreakers>
 </document>

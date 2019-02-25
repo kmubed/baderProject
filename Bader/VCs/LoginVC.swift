@@ -116,9 +116,11 @@ extension LoginVC {
                 
 //                let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin2") as! SWRevealViewController
 //                self.present(goToHomePage, animated: true, completion: nil)
+
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "AfterLogin2")
                 self.present(controller, animated: true, completion: nil)
+                
 //                if let window = self.window{
 //                    window.rootViewController = controller
 //                }
