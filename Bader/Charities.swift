@@ -13,8 +13,8 @@ class Charities {
     var CharityId : Int = 0
     var Name : String = ""
     var Address : String = ""
-    var Coordinate_X : Float = 0.0
-    var Coordinate_Y : Float = 0.0
+    var Coordinate_X : Double = 0.0
+    var Coordinate_Y : Double = 0.0
     var Phone : String = ""
     var city : String = ""
     var working_hours_week_daysPM : String = ""
@@ -28,8 +28,8 @@ class Charities {
         charity.CharityId = dataJson["CharityId"] as? Int ?? 0
         charity.Name = dataJson["Name"] as? String ?? ""
         charity.Address = dataJson["Address"] as? String ?? ""
-        charity.Coordinate_X = dataJson["Coordinate_X"] as? Float ?? 0.0
-        charity.Coordinate_Y = dataJson["Coordinate_Y"] as? Float ?? 0.0
+        charity.Coordinate_X = dataJson["Coordinate_X"] as? Double ?? 0.0
+        charity.Coordinate_Y = dataJson["Coordinate_Y"] as? Double ?? 0.0
         charity.Phone = dataJson["Phone"] as? String ?? ""
         charity.city = dataJson["city"] as? String ?? ""
         charity.working_hours_week_daysPM = dataJson["working_hours_week_daysPM"] as? String ?? ""

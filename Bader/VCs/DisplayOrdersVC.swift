@@ -13,14 +13,22 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
     
     
     @IBOutlet weak var TableViewData: UITableView!
-    
+    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+
     var orderList = [Orders()]
     var view1 = UIView()
     var type=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if revealViewController() != nil {
+            print("revealViewController not null ")
+            
+            menuBarItem.target = self.revealViewController()
+            menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
+            
+            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        }
         InitializeSpinner()
         startLoding()
         getJsonFromUrl()

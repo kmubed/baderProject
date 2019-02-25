@@ -17,7 +17,8 @@ class AddNeedyVC : UIViewController
     @IBOutlet weak var Address: UITextField!
     @IBOutlet weak var ContactWay: UITextField!
     @IBOutlet weak var labelMassage: UILabel!
-    
+    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+
     @IBAction func Send(_ sender: Any) {
        getJsonFromUrl()
         
@@ -41,6 +42,14 @@ class AddNeedyVC : UIViewController
     @IBOutlet weak var ButtonLayoutS: NSLayoutConstraint!
     override func viewDidLoad() {
         SettingUpKeyboardNotification()
+        if revealViewController() != nil {
+            print("revealViewController not null ")
+            
+            menuBarItem.target = self.revealViewController()
+            menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
+            
+            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        }
     }
     
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6221FD0B2223145500351BDD /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6221FD0A2223145500351BDD /* MapVC.swift */; };
 		62251DBB2204C8E70088A154 /* brwsar_iconin.png in Resources */ = {isa = PBXBuildFile; fileRef = 62251DBA2204C8E70088A154 /* brwsar_iconin.png */; };
 		62251DBD2204CBBD0088A154 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62251DBC2204CBBD0088A154 /* UserInfo.swift */; };
 		62251DBF2204D2000088A154 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62251DBE2204D2000088A154 /* TabBarController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6221FD0A2223145500351BDD /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
 		62251DBA2204C8E70088A154 /* brwsar_iconin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brwsar_iconin.png; sourceTree = "<group>"; };
 		62251DBC2204CBBD0088A154 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		62251DBE2204D2000088A154 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 				AB7BB932220C89C200F86AE7 /* DisplayOrdersVC.swift */,
 				ABEEC91D21FA2700009652AA /* SignUpVC.swift */,
 				62439D3B220A244200C03DB2 /* AddDonationVC.swift */,
+				6221FD0A2223145500351BDD /* MapVC.swift */,
 			);
 			path = VCs;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				AB109E492208DF8700F1D645 /* ListNeedyCell.swift in Sources */,
 				ABFA8E7A21FCD3200070720E /* DonationsCell.swift in Sources */,
 				6226F938222139120016E794 /* ViewController2.swift in Sources */,
+				6221FD0B2223145500351BDD /* MapVC.swift in Sources */,
 				62251DBF2204D2000088A154 /* TabBarController.swift in Sources */,
 				6226F936222093F40016E794 /* SWRevealViewController.m in Sources */,
 				ABE3F0B12209EC3500CE9024 /* MyOrdersDetailsaVC.swift in Sources */,

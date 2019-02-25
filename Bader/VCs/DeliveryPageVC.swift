@@ -41,6 +41,13 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         
         print("count return : \(donationList.count)")
         stopLoding()
+        if(donationList.count == 0){
+            donation = Donations()
+            donation.name = "لا يوجد طلبات حاليا"
+            donation.DonationId = 0
+            
+            self.donationList.append(donation)
+        }
         
         return self.donationList.count
         
@@ -64,12 +71,19 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
 
 //        cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description
         
+        if(self.donation.DonationId == 0){
+            cell.deliveryButton.isHidden = true
+        }else{
+            cell.deliveryButton.isHidden = false
+
+        }
                 cell.DonationName.text = self.donation.name
                 cell.NeedyName.text = self.user.Fname + " " + self.user.Lname
                 cell.Email.text = self.user.email
                 cell.City.text = self.user.city
                 cell.DonationImage.image = base64Convert(base64String: donation.image)
 
+        
         
         cell.deliveryButton.tag = indexPath.row
         cell.deliveryButton.addTarget(self, action: #selector(AcceptDelivery) , for: .touchUpInside)

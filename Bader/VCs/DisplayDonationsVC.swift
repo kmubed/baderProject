@@ -11,7 +11,8 @@ import UIKit
 class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSource {
     
     @IBOutlet weak var TableViewData: UITableView!
-    
+    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+
     
 
     var donationList = [Donations()]
@@ -20,6 +21,15 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if revealViewController() != nil {
+            print("revealViewController not null ")
+            
+            menuBarItem.target = self.revealViewController()
+            menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
+            
+            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
+        }
         
         InitializeSpinner()
         startLoding()
