@@ -19,7 +19,6 @@ class MapVC: UIViewController , MKMapViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.map.delegate = self
 
         let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 8,longitudeDelta: 8)
         let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.266638, 40.416055)
@@ -116,7 +115,8 @@ class MapVC: UIViewController , MKMapViewDelegate{
             self.stopLoding()
             self.addAnnotations(coords: self.coords)
 
-            
+            self.map.delegate = self
+
         }
     }
     
@@ -155,4 +155,36 @@ class MapVC: UIViewController , MKMapViewDelegate{
     }
     
 
+    
+    
+    
+    
+//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+//        if annotation is PinAnnotation {
+//            let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
+//            print("mapView")
+//            pinAnnotationView.pinColor = .purple
+//            pinAnnotationView.isDraggable = true
+//            pinAnnotationView.canShowCallout = true
+//            pinAnnotationView.animatesDrop = true
+//            
+//            let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
+//            deleteButton.frame.size.width = 44
+//            deleteButton.frame.size.height = 44
+//            deleteButton.backgroundColor = UIColor.red
+//            deleteButton.setImage(UIImage(named: "brwsar_iconin.png"), for: .normal)
+//            
+//            pinAnnotationView.leftCalloutAccessoryView = deleteButton
+//            
+//            return pinAnnotationView
+//        }
+//        
+//        return nil
+//    }
+//    
+//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+//        if let annotation = view.annotation as? PinAnnotation {
+//            mapView.removeAnnotation(annotation)
+//        }
+//    }
 }

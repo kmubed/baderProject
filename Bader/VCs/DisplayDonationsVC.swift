@@ -12,8 +12,10 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
     
     @IBOutlet weak var TableViewData: UITableView!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
+    @IBOutlet weak var donationType: UIButton!
 
-    
+    let typeList = ["كل الإعلانات" ,"الصنف١" , "الصنف٢"  , "الصنف٣" , "الصنف٤" , "الصنف٥"]
+
 
     var donationList = [Donations()]
     var view1 = UIView()
@@ -91,12 +93,23 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
         
     }
     
+    @IBAction func changeType(_ sender: Any) {
+        
+        RPicker.selectOption(dataArray: typeList) { (selctedText, atIndex) in
+            // TODO: Your implementation for selection
+            self.donationType.setTitle(selctedText, for: .normal)
+            self.donationType.tag = atIndex
+            
+            self.getJsonFromUrl()
+        }
+    }
+    
     
     func getJsonFromUrl(){
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getAllDonations?type=2&status=2")!
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getAllDonations?type=\(self.donationType.tag)&status=2")!
             
             //+UserInfo.userId.description)! // Enter URL Here
         
