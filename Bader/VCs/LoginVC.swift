@@ -111,14 +111,23 @@ extension LoginVC {
             if(self.user.UserId != 0)
             {
                 
-                UserInfo.userId = 4
-//                UserInfo.userId=self.user.UserId
+           //     UserInfo.userId = 4
+                UserInfo.userId=self.user.UserId
                 
-//                let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin2") as! SWRevealViewController
-//                self.present(goToHomePage, animated: true, completion: nil)
+                let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin2") as! SWRevealViewController
+                self.present(goToHomePage, animated: true, completion: nil)
+                if (self.user.type == 2)
+                {
+                let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin1") as! TabBarController
+                self.present(goToHomePage, animated: true, completion: nil)
+                } else {
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let controller = storyboard.instantiateViewController(withIdentifier: "AfterLogin2")
                 self.present(controller, animated: true, completion: nil)
+                }
+                
+                
+                
 //                if let window = self.window{
 //                    window.rootViewController = controller
 //                }
