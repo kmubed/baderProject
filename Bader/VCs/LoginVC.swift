@@ -70,8 +70,8 @@ extension LoginVC {
     func getJsonFromUrl(){
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
-        var useremail = (email.text)! as String
-        var userPassword = (password.text)! as String
+        let useremail = (email.text)! as String
+        let userPassword = (password.text)! as String
         
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getLogin?email=\(useremail)&password=\(userPassword)")! // Enter URL Here
         
@@ -87,6 +87,8 @@ extension LoginVC {
                         
                         print("##UserId = \(self.user.UserId)")
                         print("##Fname = \(self.user.Fname)")
+                       print("##type = \(self.user.type)")
+                    
                         
                                             }
 //                }
@@ -113,17 +115,17 @@ extension LoginVC {
                 
            //     UserInfo.userId = 4
                 UserInfo.userId=self.user.UserId
-                
-                let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin2") as! SWRevealViewController
-                self.present(goToHomePage, animated: true, completion: nil)
                 if (self.user.type == 2)
                 {
                 let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin1") as! TabBarController
                 self.present(goToHomePage, animated: true, completion: nil)
                 } else {
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: "AfterLogin2")
-                self.present(controller, animated: true, completion: nil)
+//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//                let controller = storyboard.instantiateViewController(withIdentifier: "AfterLogin2")
+//                self.present(controller, animated: true, completion: nil)
+                    
+                    let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin2") as! SWRevealViewController
+                    self.present(goToHomePage, animated: true, completion: nil)
                 }
                 
                 

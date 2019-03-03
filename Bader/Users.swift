@@ -21,21 +21,6 @@ class Users {
     
 
     
-//    init(UserId : Int ,Fname : String , Lname : String,email : String, password : String,city : String,active : Int,type : Int,DateOfRegister : Data) {
-//
-//        self.UserId = UserId
-//        self.Fname = Fname
-//        self.Lname = Lname
-//        self.email = email
-//        self.password = password
-//        self.city = city
-//        self.active = active
-//        self.type = type
-//        self.DateOfRegister = DateOfRegister
-//
-//    }
-
-    
     func getUsersData( dataJson:[String: Any] ) -> (Users) {
         var user = Users()
         user.UserId = dataJson["User_Id"] as? Int ?? 0

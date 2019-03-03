@@ -14,12 +14,12 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
     @IBOutlet weak var donationType: UIButton!
 
-    let typeList = ["كل الإعلانات" ,"الصنف١" , "الصنف٢"  , "الصنف٣" , "الصنف٤" , "الصنف٥"]
+    let typeList = ["كل التبرعات" ,"ملابس" , "أجهزة كهربائية" ,  "أثاث" ,"أوراق" ]
 
 
     var donationList = [Donations()]
     var view1 = UIView()
-    var type=0  
+    var type=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,12 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
             self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
         }
         
+        
         InitializeSpinner()
         startLoding()
+        var type=0
+       // self.donationType.tag = 0
+        //print("ss" , donationType.tag)
         getJsonFromUrl()
         
     }
@@ -46,24 +50,15 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
         stopLoding()
         
         return self.donationList.count
-        //                return 10
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.TableViewData.dequeueReusableCell(withIdentifier: "CellData", for: indexPath) as! TableViewCell
-        
-        
-        
-        
-        
-        //        cell.backgroundColor = .clear
-        
-        
+
         
         var donation : Donations = self.donationList[indexPath.row]
-        
         
         print("donation.name : \(donation.name)")
 
@@ -99,6 +94,7 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
             // TODO: Your implementation for selection
             self.donationType.setTitle(selctedText, for: .normal)
             self.donationType.tag = atIndex
+            self.type = atIndex
             
             self.getJsonFromUrl()
         }
@@ -109,9 +105,9 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getAllDonations?type=\(self.donationType.tag)&status=2")!
-            
-            //+UserInfo.userId.description)! // Enter URL Here
+        
+        
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getAllDonations?type=\(type)&status=2")!
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open")
@@ -207,5 +203,4 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
             return decodedimage!
         }
     }
-} 
-
+}

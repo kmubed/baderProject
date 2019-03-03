@@ -6,13 +6,7 @@
 //  Copyright © 1440 هـ aa. All rights reserved.
 //
 
-//
-//  MyDonationsDetailsVC.swift
-//  Bader
-//
-//  Created by AMJAD - on 29 جما١، 1440 هـ.
-//  Copyright © 1440 هـ aa. All rights reserved.
-//
+
 
 
 import UIKit
@@ -33,6 +27,7 @@ class DisplayCharityVC: UIViewController {
 
     var charity = Charities()
     var view1 = UIView()
+  
     
     
     override func viewDidLoad() {
