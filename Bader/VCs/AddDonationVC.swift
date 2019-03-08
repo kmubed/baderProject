@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImagePickerControllerDelegate , UITextFieldDelegate{
 
     @IBOutlet weak var myImageView: UIImageView!
     
@@ -17,7 +17,7 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
     @IBOutlet weak var donationDescription: UITextField!
     @IBOutlet weak var donationType: UIButton!
     
-    let typeList = ["نوع١", "نوع٢", "نوع٣", "نوع٤"]
+   let typeList = ["ملابس", "أجهزة كهربائية", "أثاث", "أوراق"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +35,14 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
 //        self.donationType.setTitle(typeList[0], for: .normal)
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
 
@@ -89,6 +97,11 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
     
     @IBAction func addDonation(_ sender: Any) {
         getJsonFromUrl()
+        let alert = UIAlertController(title: "تم إضافة تبرعك إلى صفحة التبرعات", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
 
@@ -143,12 +156,7 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
-            
-            //            self.donationName.text = self.donation.name
-            //            self.donationUserName.text = self.user.Fname + self.user.Lname
-            //            self.donationUserEmail.text = self.user.email
-            //            self.donationImage.image = self.base64Convert(base64String: self.donation.image)
-            //            self.donationDesc.text = self.donation.description
+
             
         }
     }

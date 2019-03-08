@@ -10,13 +10,12 @@
 import UIKit
 
 
-class AddNeedyVC : UIViewController
+class AddNeedyVC : UIViewController , UITextFieldDelegate
 {
     @IBOutlet weak var NeedyName: UITextField!
     @IBOutlet weak var Orders: UITextField!
     @IBOutlet weak var Address: UITextField!
     @IBOutlet weak var ContactWay: UITextField!
-    @IBOutlet weak var labelMassage: UILabel!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
 
     @IBAction func Send(_ sender: Any) {
@@ -32,6 +31,11 @@ class AddNeedyVC : UIViewController
 //             getJsonFromUrl()
 //        }
 //
+        let alert = UIAlertController(title: "تم إضافةالمستحق إلى صفحة الطلبات ", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -39,9 +43,9 @@ class AddNeedyVC : UIViewController
     }
     
     
-    @IBOutlet weak var ButtonLayoutS: NSLayoutConstraint!
+   // @IBOutlet weak var ButtonLayoutS: NSLayoutConstraint!
     override func viewDidLoad() {
-        SettingUpKeyboardNotification()
+        //SettingUpKeyboardNotification()
         if revealViewController() != nil {
             print("revealViewController not null ")
             
@@ -52,34 +56,35 @@ class AddNeedyVC : UIViewController
         }
     }
     
+    
 }
 
 extension AddNeedyVC {
     
-    func SettingUpKeyboardNotification(){
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardDidShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardDidHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
-    }
-    @objc func KeyboardDidShow (notification : NSNotification) {
-        // ارتفاع الكيبورد، نجلب الحجم للحصول ع الارتفاع
-        if let KeyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0.3) {
-                self.ButtonLayoutS.constant = KeyboardSize.height + 30
-                self.view.layoutIfNeeded()
-            }
-        }
-    }
+//    func SettingUpKeyboardNotification(){
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardDidShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+//
+//        NotificationCenter.default.addObserver(self, selector: #selector(KeyboardDidHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+//
+//    }
+//    @objc func KeyboardDidShow (notification : NSNotification) {
+//        // ارتفاع الكيبورد، نجلب الحجم للحصول ع الارتفاع
+//        if let KeyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+//            UIView.animate(withDuration: 0.3) {
+//                self.ButtonLayoutS.constant = KeyboardSize.height + 30
+//                self.view.layoutIfNeeded()
+//            }
+//        }
+//    }
     
-    @objc func KeyboardDidHide(notification : NSNotification) {
-        UIView.animate(withDuration: 0.3) {
-            self.ButtonLayoutS.constant = 311
-            self.view.layoutIfNeeded() //يعني قم باعادة عملية ال لاي اوت في داخل الفيو
-        }
-        
-    }
+//    @objc func KeyboardDidHide(notification : NSNotification) {
+//        UIView.animate(withDuration: 0.3) {
+//            self.ButtonLayoutS.constant = 311
+//            self.view.layoutIfNeeded() //يعني قم باعادة عملية ال لاي اوت في داخل الفيو
+//        }
+//
+//    }
     
     
     

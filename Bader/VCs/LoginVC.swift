@@ -17,8 +17,6 @@ class LoginVC : UIViewController
     var user:Users = Users()
     @IBAction func Login(_ sender: Any) {
         getJsonFromUrl()
-//        let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin") as! TabBarController
-//        self.present(goToHomePage, animated: true, completion: nil)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -82,16 +80,14 @@ extension LoginVC {
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                     let blogs = json["result"] as? [String: Any] {
                     print("##blog = \(blogs.count)")
-//                    for blog in blogs {
                         self.user = self.user.getUsersData(dataJson: blogs)
                         
                         print("##UserId = \(self.user.UserId)")
                         print("##Fname = \(self.user.Fname)")
                        print("##type = \(self.user.type)")
-                    
-                        
+          
                                             }
-//                }
+
             } catch {
                 print("##Error deserializing JSON: \(error)")
             }
@@ -120,20 +116,9 @@ extension LoginVC {
                 let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin1") as! TabBarController
                 self.present(goToHomePage, animated: true, completion: nil)
                 } else {
-//                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//                let controller = storyboard.instantiateViewController(withIdentifier: "AfterLogin2")
-//                self.present(controller, animated: true, completion: nil)
-                    
                     let goToHomePage = self.storyboard?.instantiateViewController(withIdentifier: "AfterLogin2") as! SWRevealViewController
                     self.present(goToHomePage, animated: true, completion: nil)
                 }
-                
-                
-                
-//                if let window = self.window{
-//                    window.rootViewController = controller
-//                }
-
                 
             }
         }

@@ -63,8 +63,9 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
         print("donation.name : \(donation.name)")
 
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
-
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+       
+        
         cell.name.text = donation.name
         cell.descriptions.text = donation.description
         cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description

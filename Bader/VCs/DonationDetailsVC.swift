@@ -19,6 +19,10 @@ class DonationDetailsVC: UIViewController {
     
     @IBAction func OrderButton(_ sender: UIButton) {
         getJFUInsirtNewRequest()
+        let alert = UIAlertController(title: "تم إضافة طلبك الى صفحة طلباتي", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+        self.present(alert, animated: true)
     }
     
     var donation = Donations()

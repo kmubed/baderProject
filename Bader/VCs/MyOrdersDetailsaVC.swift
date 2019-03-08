@@ -18,6 +18,7 @@ class MyOrdersDetailsaVC: UIViewController {
     @IBOutlet weak var donationUserEmail: UILabel!
     @IBOutlet weak var donationUserCity: UILabel!
     
+    @IBOutlet weak var status: UILabel!
     @IBOutlet weak var ButtonDelivary: UIButton!
     
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
@@ -59,6 +60,18 @@ class MyOrdersDetailsaVC: UIViewController {
             self.donationImage.image = self.base64Convert(base64String: self.donation.image)
             self.donationDesc.text = self.donation.description
             self.donationUserCity.text = self.user.city
+            
+            var order = NeedyOrders()
+            print("OrderUser_status : \(order.OrderUser_status)")
+            if order.OrderUser_status == 1 {
+                self.status.text = "قيد الانتظار"
+            }
+            if order.OrderUser_status == 2 {
+                self.status.text = "مقبول"
+            }
+            if order.OrderUser_status == 3 {
+                self.status.text = "مرفوض"
+            }
             
             self.ButtonDelivary.isHidden = ( UserInfo.userId == self.donation.Id_of_Needy ) ? false : true;
             

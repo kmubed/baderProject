@@ -14,8 +14,10 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
     @IBOutlet weak var TableViewData: UITableView!
     
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
-
     
+    var donation=Donations()
+    var order = NeedyOrders()
+    var OrdersList = [NeedyOrders()]
     var donationList = [Donations()]
     var view1 = UIView()
     
@@ -25,7 +27,6 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
         
         if revealViewController() != nil {
             print("revealViewController not null ")
-            
             menuBarItem.target = self.revealViewController()
             menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
             
@@ -52,15 +53,7 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         let cell = self.TableViewData.dequeueReusableCell(withIdentifier: "CellData", for: indexPath) as! MyOrders_DonationsCell
-        
-        
-        
-        
-        
-        //        cell.backgroundColor = .clear
-        
-        
-        
+
         var donation : Donations = self.donationList[indexPath.row]
         
         
@@ -73,6 +66,21 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
         cell.descriptions.text = donation.description
         cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description
         cell.images.image = base64Convert(base64String: donation.image)
+      
+        var orderCell : NeedyOrders = NeedyOrders()
+        orderCell  = self.OrdersList[indexPath.row]
+        
+       // let orders = NeedyOrders()
+        print("OrderUser_status : \(orderCell.OrderUser_status)")
+        if orderCell.OrderUser_status == 1 {
+        cell.status.text = "قيد الانتظار"
+        }
+       else if orderCell.OrderUser_status == 2 {
+            cell.status.text = "مقبول"
+        }
+       else if orderCell.OrderUser_status == 3 {
+            cell.status.text = "مرفوض"
+        }
         
         let separatorLine = UIImageView.init(frame: CGRect(x: 4, y: 0, width: cell.frame.width - 8, height: 2))
         separatorLine.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 250/255, alpha: 100)
@@ -110,17 +118,25 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
                     //                    print("##URLSession blogs ")
                     self.donationList.removeAll()
                     for blog in blogs {
-                        var donation=Donations()
-                        donation = donation.getDonationsData(dataJson: blog)
+                        //var donation=Donations()
+                        self.donation = self.donation.getDonationsData(dataJson: blog)
                         //                        if let name = blog["Name"] as? String {print("##Name : \(name)")}
                         
-                        print("##donationId = \(donation.DonationId)")
-                        print("##name = \(donation.name)")
-                        print("##OrderStatus = \(donation.OrderStatus)")
-                        print("##description = \(donation.description)")
+                        print("##donationId = \(self.donation.DonationId)")
+                        print("##name = \(self.donation.name)")
+                        print("##OrderStatus = \(self.donation.OrderStatus)")
+                        print("##description = \(self.donation.description)")
                         
-                        
-                        self.donationList.append(donation)
+                    if let ordersList = blog["order"] as? [String: Any] {
+                       // var orders = NeedyOrders()
+                        self.order = self.order.getOrdersData(dataJson: blog)
+                            
+                        }
+                    
+                       
+          
+                        self.donationList.append(self.donation)
+                        self.OrdersList.append(self.order)
                     }
                 }
             } catch {

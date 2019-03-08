@@ -1,15 +1,33 @@
 //
-//  DashboardVC.swift
+//  DashboardViewController.swift
 //  Bader
 //
-//  Created by AMJAD - on 21 جما٢، 1440 هـ.
+//  Created by AMJAD - on 28 جما٢، 1440 هـ.
 //  Copyright © 1440 هـ aa. All rights reserved.
 //
 
-
 import UIKit
 
-class DashboardVC: UIViewController {
+class DashboardViewController: UITableViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+       getJsonFromUrl()
+    }
+
+
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 12
+    }
+
+    
     
     @IBOutlet weak var donations: UILabel!
     @IBOutlet weak var clothes: UILabel!
@@ -24,22 +42,13 @@ class DashboardVC: UIViewController {
     @IBOutlet weak var finished: UILabel!
     @IBOutlet weak var availabe: UILabel!
     
+    
+    
     var dashboard = Dashboard()
     var view1 = UIView()
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-//        if revealViewController() != nil {
-//            print("revealViewController not null ")
-//            //            menuBarItem.target = self.revealViewController()
-//            //            menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
-//
-//            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
-//        }
-        getJsonFromUrl()
-        // Do any additional setup after loading the view.
-    }
+    
     
     func getJsonFromUrl(){
         print("##getJsonFromUrl open")
@@ -100,7 +109,7 @@ class DashboardVC: UIViewController {
             self.finished.text = self.dashboard.expiry_Percent.description
             self.availabe.text = self.dashboard.Available_Percent.description
             
- 
+            
         }
     }
     
@@ -155,4 +164,6 @@ class DashboardVC: UIViewController {
     
 }
 
+
+    
 

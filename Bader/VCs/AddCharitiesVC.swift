@@ -10,7 +10,7 @@
 import UIKit
 
 
-class AddCharitiesVC : UIViewController
+class AddCharitiesVC : UIViewController , UITextFieldDelegate
 {
     @IBOutlet weak var Name: UITextField!
     @IBOutlet weak var Address: UITextField!
@@ -26,6 +26,7 @@ class AddCharitiesVC : UIViewController
     @IBAction func Add(_ sender: Any) {
         getJsonFromUrl()
         
+        
         //        labelMassage.isHidden=false
         //
         //        if ( NeedyName.text == "" || Orders.text == "" || Address.text == "" || ContactWay.text == ""  ) {
@@ -36,11 +37,24 @@ class AddCharitiesVC : UIViewController
         //             getJsonFromUrl()
         //        }
         //
+        let alert = UIAlertController(title: "تم إضافة الجمعية بنجاح", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    
     
     
 //    @IBOutlet weak var ButtonLayoutS: NSLayoutConstraint!
