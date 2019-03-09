@@ -121,8 +121,6 @@ class MapVC: UIViewController , MKMapViewDelegate{
     }
     
     
-    
-    
     func startLoding(){
         self.view.addSubview(view1)
     }
@@ -188,3 +186,5 @@ class MapVC: UIViewController , MKMapViewDelegate{
 //        }
 //    }
 }
+
+
