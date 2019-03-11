@@ -96,67 +96,72 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
     }
     
     @IBAction func addDonation(_ sender: Any) {
-        getJsonFromUrl()
-        let alert = UIAlertController(title: "تم إضافة تبرعك إلى صفحة التبرعات", message: "", preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
-        
-        self.present(alert, animated: true)
+        postRequest()
+
     }
     
 
-    func getJsonFromUrl(){
-        print("##getJsonFromUrl open")
-        print("##performPostRequest open")
-
+    func postRequest() {
+        
         let donationNameStr = (donationName.text)! as String
         let donationTypeStr = ((donationType.tag + 1).description) as String
         let donationDescriptionStr = (donationDescription.text)! as String
         let imageBase64Str = convertImageToBase64(image: myImageView.image!)
         let fullBase64String = "data:image/png;base64,\(imageBase64Str))"
-
-//        print("##imageBase64Str \(imageBase64Str)")
-
-        let linkString = "http://amjadsufyani-001-site1.itempurl.com/api/values/AddDonations?"
-        let linkParameter = "Name=\(donationNameStr)&Description=\(donationDescriptionStr)&Type=\(donationTypeStr)&Id_of_Donor=0&imageBase=\(fullBase64String)".addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)!
+        
+        print("##imageBase64Str \(imageBase64Str)")
+        
+        let linkString = "http://amjadsufyani-001-site1.itempurl.com/api/values/AddDonations"
+        let linkParameter = "Name=\(donationNameStr)&Description=\(donationDescriptionStr)&Type=\(donationTypeStr)&Id_of_Donor=0".addingPercentEncoding(withAllowedCharacters:CharacterSet.urlQueryAllowed)!
         let url = URL(string: (linkString) )! // Enter URL Here
-
-
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
-            print("##URLSession \(url.description)")
-            do {
-
-                //                if let data = data,
-                if let data = data,
-                    let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)as? [String: Any],
-                    let blogs = json["result"] as? Int {
-                    print("##blog Added donation = \(blogs.description)")
-                    
-                    //                    for blog in blogs {
-                    //                    self.user = self.user.getUsersData(dataJson: blogs)
-                    //
-                    //                    print("##UserId = \(self.user.UserId)")
-                    //                    print("##Fname = \(self.user.Fname)")
-                    //
-                    //                }
-                }
-            } catch {
-                print("##Error deserializing JSON: \(error)")
+        
+        //declare parameter as a dictionary which contains string as key and value combination.
+        let jsondata = ["Name":donationNameStr,"Description":donationDescriptionStr,"Type":donationTypeStr,"Id_of_Donor":"0","Image":imageBase64Str]
+        
+        
+        //        PlaygroundPage.current.needsIndefiniteExecution = true
+        
+        let jsonData = try! JSONSerialization.data(withJSONObject: jsondata, options: [])
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("error:", error)
+                return
             }
+            
+            do {
+                guard let data = data else { return }
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: AnyObject] else { return }
+                print("json:", json)
+                let blogs = json["result"] as? Int
+                print("blogs:", blogs)
+                
+                if(blogs ?? 0 > 0){
+                    let alert = UIAlertController(title: "تم إضافة تبرعك إلى صفحة التبرعات", message: "", preferredStyle: .alert)
+                    
+                    alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+                    
+                    self.present(alert, animated: true)
+                }
 
-            //            print(self.names)
-            self.showNames()
-
+            } catch {
+                print("error:", error)
+            }
         }
+        
         task.resume()
-
-
     }
     
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
 
+            
             
         }
     }

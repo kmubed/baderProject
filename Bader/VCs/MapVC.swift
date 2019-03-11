@@ -10,20 +10,20 @@ import UIKit
 import MapKit
 class MapVC: UIViewController , MKMapViewDelegate{
 
-    @IBOutlet weak var map: MKMapView!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
 
+    @IBOutlet weak var mapView: MKMapView!
     var view1 = UIView()
     var coords = [Charities()];
-    
+    let regionRadius: CLLocationDistance = 1000
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         let span:MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 8,longitudeDelta: 8)
         let location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(21.266638, 40.416055)
         let region:MKCoordinateRegion = MKCoordinateRegion(center: location , span: span)
-        map.setRegion(region, animated: true)
+        mapView.setRegion(region, animated: true)
  
         if revealViewController() != nil {
             print("revealViewController not null ")
@@ -37,6 +37,8 @@ class MapVC: UIViewController , MKMapViewDelegate{
         InitializeSpinner()
         startLoding()
         getJsonFromUrl()
+        
+  
 
 //
 //        let annotation = MKPointAnnotation()
@@ -47,18 +49,19 @@ class MapVC: UIViewController , MKMapViewDelegate{
         
         // Do any additional setup after loading the view.
     }
+    
+
 
     func addAnnotations(coords: [Charities]){
-        var i : Int = 0
 
         for coord in coords{
             print("anno for loop\(coord.CharityId) ")
-            var CLLCoordType = CLLocationCoordinate2D(latitude: coord.Coordinate_X,longitude: coord.Coordinate_Y);
-            var anno = MKPointAnnotation();
+            let CLLCoordType = CLLocationCoordinate2D(latitude: coord.Coordinate_X,longitude: coord.Coordinate_Y);
+            let anno = MKPointAnnotation();
             anno.coordinate = CLLCoordType
                     anno.title = coord.Name
                     anno.subtitle = coord.Phone
-                    map.addAnnotation(anno)
+                    mapView.addAnnotation(anno)
         }
         
     }
@@ -115,7 +118,7 @@ class MapVC: UIViewController , MKMapViewDelegate{
             self.stopLoding()
             self.addAnnotations(coords: self.coords)
 
-            self.map.delegate = self
+            self.mapView.delegate = self
 
         }
     }
@@ -151,40 +154,5 @@ class MapVC: UIViewController , MKMapViewDelegate{
         view1.center = self.view.center
         view1.tag = 1000
     }
-    
-
-    
-    
-    
-    
-//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-//        if annotation is PinAnnotation {
-//            let pinAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "myPin")
-//            print("mapView")
-//            pinAnnotationView.pinColor = .purple
-//            pinAnnotationView.isDraggable = true
-//            pinAnnotationView.canShowCallout = true
-//            pinAnnotationView.animatesDrop = true
-//            
-//            let deleteButton = UIButton(type: UIButton.ButtonType.custom) as UIButton
-//            deleteButton.frame.size.width = 44
-//            deleteButton.frame.size.height = 44
-//            deleteButton.backgroundColor = UIColor.red
-//            deleteButton.setImage(UIImage(named: "brwsar_iconin.png"), for: .normal)
-//            
-//            pinAnnotationView.leftCalloutAccessoryView = deleteButton
-//            
-//            return pinAnnotationView
-//        }
-//        
-//        return nil
-//    }
-//    
-//    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
-//        if let annotation = view.annotation as? PinAnnotation {
-//            mapView.removeAnnotation(annotation)
-//        }
-//    }
+ 
 }
-
-

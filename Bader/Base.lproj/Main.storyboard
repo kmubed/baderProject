@@ -2386,6 +2386,9 @@
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VAS-3Q-XcD">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <connections>
+                                    <outlet property="delegate" destination="UFv-Fc-LyA" id="Icu-xk-UBZ"/>
+                                </connections>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2403,7 +2406,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="map" destination="VAS-3Q-XcD" id="T2n-ld-i59"/>
+                        <outlet property="mapView" destination="VAS-3Q-XcD" id="Eq1-bg-VGL"/>
                         <outlet property="menuBarItem" destination="RRC-fx-mNo" id="v84-mv-n9p"/>
                     </connections>
                 </viewController>
@@ -2869,14 +2872,14 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="30" height="30"/>
-        <image name="bars" width="30" height="30"/>
-        <image name="delete" width="32" height="32"/>
-        <image name="image" width="128" height="128"/>
-        <image name="menublack32x32" width="32" height="32"/>
-        <image name="personal-icon-12.jpg" width="256" height="256"/>
-        <image name="x-button" width="64" height="64"/>
-        <image name="بادر-3" width="2083" height="2083"/>
+        <image name="add" width="48" height="48"/>
+        <image name="bars" width="48" height="48"/>
+        <image name="delete" width="48" height="48"/>
+        <image name="image" width="204.80000305175781" height="204.80000305175781"/>
+        <image name="menublack32x32" width="24" height="24"/>
+        <image name="personal-icon-12.jpg" width="512" height="512"/>
+        <image name="x-button" width="400.69564819335938" height="400.69564819335938"/>
+        <image name="بادر-3" width="1000.0800170898438" height="1000.0800170898438"/>
         <namedColor name="First">
             <color red="0.29019607843137257" green="0.58431372549019611" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
@@ -2888,7 +2891,7 @@
         <segue reference="xEr-jT-TfG"/>
         <segue reference="pTs-vg-Kf0"/>
         <segue reference="3Cm-st-plh"/>
-        <segue reference="0wH-T1-2Kx"/>
+        <segue reference="aaU-f9-uky"/>
         <segue reference="ITO-hJ-A87"/>
         <segue reference="xBe-jj-yTg"/>
     </inferredMetricsTieBreakers>
