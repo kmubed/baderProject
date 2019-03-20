@@ -170,16 +170,17 @@ class DeletePageVC : UIViewController , UITableViewDelegate , UITableViewDataSou
                     let blogs = json["result"] as? [[String: Any]] {
                     //                    print("##URLSession blogs ")
                     self.donationList.removeAll()
+                     self.UserList.removeAll()
                     for blog in blogs {
                         self.donation=Donations()
                         self.donation = self.donation.getDonationsData(dataJson: blog)
                         
                         
-                        if let userList = blog["user"] as? [String: Any] {
+                        if let userJson = blog["user"] as? [String: Any] {
                             //                            print("##blogsUser = \(userList)")
                             //                            print("##blogsUser = \(userList)")
                             self.user=Users()
-                            self.user = self.user.getUsersData(dataJson: userList)
+                            self.user = self.user.getUsersData(dataJson: userJson)
                             
                         }
                         print("##donationId = \(self.donation.DonationId)")

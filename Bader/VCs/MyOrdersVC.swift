@@ -117,6 +117,7 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
                     let blogs = json["result"] as? [[String: Any]] {
                     //                    print("##URLSession blogs ")
                     self.donationList.removeAll()
+                    self.OrdersList.removeAll()
                     for blog in blogs {
                         //var donation=Donations()
                         self.donation = self.donation.getDonationsData(dataJson: blog)
@@ -127,16 +128,18 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
                         print("##OrderStatus = \(self.donation.OrderStatus)")
                         print("##description = \(self.donation.description)")
                         
-                    if let ordersList = blog["order"] as? [String: Any] {
+                    if var ordersJson = blog["needy"] as? [String: Any] {
                        // var orders = NeedyOrders()
-                        self.order = self.order.getOrdersData(dataJson: blog)
-                            
+                        
+                        self.order = self.order.getOrdersData(dataJson: ordersJson)
+                        print("OrderUser_status json: \(ordersJson)")
+                               self.OrdersList.append(self.order)
                         }
                     
                        
           
                         self.donationList.append(self.donation)
-                        self.OrdersList.append(self.order)
+                    
                     }
                 }
             } catch {

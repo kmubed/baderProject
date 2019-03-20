@@ -12,7 +12,7 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
     
     @IBOutlet weak var DeliveryTableView: UITableView!
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
-
+    
     var donation = Donations()
     var user = Users()
     var view1 = UIView()
@@ -51,7 +51,7 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         
         return self.donationList.count
         
-    
+        
     }
     
     
@@ -61,28 +61,28 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         
         
         var donation : Donations = self.donationList[indexPath.row]
-         var user : Users = self.UserList[indexPath.row]
+        var user : Users = self.UserList[indexPath.row]
         
         
         print("donation.name : \(donation.name)")
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
-
-//        cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description
+        
+        //        cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description
         
         if(self.donation.DonationId == 0){
             cell.deliveryButton.isHidden = true
         }else{
             cell.deliveryButton.isHidden = false
-
+            
         }
-                cell.DonationName.text = self.donation.name
-                cell.NeedyName.text = self.user.Fname + " " + self.user.Lname
-                cell.Email.text = self.user.email
-                cell.City.text = self.user.city
-                cell.DonationImage.image = base64Convert(base64String: donation.image)
-
+        cell.DonationName.text = self.donation.name
+        cell.NeedyName.text = self.user.Fname + " " + self.user.Lname
+        cell.Email.text = self.user.email
+        cell.City.text = self.user.city
+        cell.DonationImage.image = base64Convert(base64String: donation.image)
+        
         
         
         cell.deliveryButton.tag = indexPath.row
@@ -95,7 +95,7 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         return cell
         
     }
- 
+    
     
     @IBAction func AcceptDelivery(_ sender: UIButton) {
         print("##AcceptNeedy start")
@@ -159,8 +159,8 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
                         self.donation = self.donation.getDonationsData(dataJson: blog)
                         
                         if let userList = blog["user"] as? [String: Any] {
-//                            print("##blogsUser = \(userList)")
-//                            print("##blogsUser = \(userList)")
+                            //                            print("##blogsUser = \(userList)")
+                            //                            print("##blogsUser = \(userList)")
                             self.user = self.user.getUsersData(dataJson: userList)
                             
                         }
@@ -193,7 +193,7 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
-           
+            
             self.DeliveryTableView.dataSource=self
             self.DeliveryTableView.reloadData()
             
@@ -248,3 +248,4 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         }
     }
 }
+

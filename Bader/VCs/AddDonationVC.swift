@@ -116,7 +116,7 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
         let url = URL(string: (linkString) )! // Enter URL Here
         
         //declare parameter as a dictionary which contains string as key and value combination.
-        let jsondata = ["Name":donationNameStr,"Description":donationDescriptionStr,"Type":donationTypeStr,"Id_of_Donor":"0","Image":imageBase64Str]
+        let jsondata = ["Name":donationNameStr,"Description":donationDescriptionStr,"Type":donationTypeStr,"Id_of_Donor":UserInfo.userId.description,"Image":imageBase64Str]
         
         
         //        PlaygroundPage.current.needsIndefiniteExecution = true
