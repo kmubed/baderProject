@@ -63,14 +63,21 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
         
         print("order.name : \(order.Name_of_Needy)")
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
+        var stringDate = ""
+        
+        if let index = (order.Date_of_Add ).range(of: "T")?.lowerBound {
+            let substring = (order.Date_of_Add )[..<index]
+            
+            stringDate = String(substring)
+        }
         
         cell.Name.text = order.Name_of_Needy
         cell.OrderOfNeedy.text = order.Order_the_Needy
         cell.Address.text = order.Address
         cell.ContactWay.text = order.Contact_Way
-        cell.DateOfUpload.text = (dateFormatter.date(from: "order.Date_of_Add" ))?.description
+        cell.DateOfUpload.text = stringDate
         
         
         let separatorLine = UIImageView.init(frame: CGRect(x: 4, y: 0, width: cell.frame.width - 8, height: 2))

@@ -983,7 +983,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="التاريخ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q4x-3L-na1">
-                                                    <rect key="frame" x="9" y="2" width="140" height="21"/>
+                                                    <rect key="frame" x="2" y="13" width="140" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1647,10 +1647,10 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-hR-qqV" customClass="XButton" customModule="Bader" customModuleProvider="target">
-                                                    <rect key="frame" x="23" y="38" width="20" height="20"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-hR-qqV">
+                                                    <rect key="frame" x="23" y="35" width="23" height="23"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="حذف" image="x-button"/>
+                                                    <state key="normal" title="حذف" image="delete"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="اسم المتبرع : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1a-6u-XIS">
                                                     <rect key="frame" x="254" y="47" width="90" height="20"/>
@@ -2026,7 +2026,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="عرض المحتاجين" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbv-RZ-5o0">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="الطلبات " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cbv-RZ-5o0">
                                                     <rect key="frame" x="16" y="11" width="156" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -2872,14 +2872,13 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="48" height="48"/>
-        <image name="bars" width="48" height="48"/>
-        <image name="delete" width="48" height="48"/>
-        <image name="image" width="204.80000305175781" height="204.80000305175781"/>
-        <image name="menublack32x32" width="24" height="24"/>
-        <image name="personal-icon-12.jpg" width="512" height="512"/>
-        <image name="x-button" width="400.69564819335938" height="400.69564819335938"/>
-        <image name="بادر-3" width="1000.0800170898438" height="1000.0800170898438"/>
+        <image name="add" width="30" height="30"/>
+        <image name="bars" width="30" height="30"/>
+        <image name="delete" width="32" height="32"/>
+        <image name="image" width="128" height="128"/>
+        <image name="menublack32x32" width="32" height="32"/>
+        <image name="personal-icon-12.jpg" width="256" height="256"/>
+        <image name="بادر-3" width="2083" height="2083"/>
         <namedColor name="First">
             <color red="0.29019607843137257" green="0.58431372549019611" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

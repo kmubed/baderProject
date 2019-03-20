@@ -29,12 +29,17 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
+        var stringDate = ""
+        
+        if let index = (donation.DateOfUpload ).range(of: "T")?.lowerBound {
+            let substring = (donation.DateOfUpload )[..<index]
+            
+            stringDate = String(substring)
+        }
         
         donationName.text = donation.name
         donationImage.image = self.base64Convert(base64String: self.donation.image)
-        donationDatetime.text = (dateFormatter.date(from: donation.DateOfUpload.description ))?.description
+        donationDatetime.text = stringDate
         getJsonFromUrl()
         // Do any additional setup after loading the view.
     }

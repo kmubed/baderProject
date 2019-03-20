@@ -55,12 +55,17 @@ class MyDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSo
         
         print("donation.name : \(donation.name)")
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
+        var stringDate = ""
+        
+        if let index = (donation.DateOfUpload ).range(of: "T")?.lowerBound {
+            let substring = (donation.DateOfUpload )[..<index]
+            
+            stringDate = String(substring)
+        }
         
         cell.name.text = donation.name
         cell.descriptions.text = donation.description
-        cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description
+        cell.UploadDate.text = stringDate
         cell.images.image = base64Convert(base64String: donation.image)
         
         let separatorLine = UIImageView.init(frame: CGRect(x: 4, y: 0, width: cell.frame.width - 8, height: 2))
