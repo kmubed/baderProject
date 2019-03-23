@@ -1,34 +1,36 @@
 //
-//  DisplayOrdersVC.swift
+//  DisplayCharitiesVC.swift
 //  Bader
 //
-//  Created by AMJAD - on 2 جما٢، 1440 هـ.
+//  Created by AMJAD - on 14 رجب، 1440 هـ.
 //  Copyright © 1440 هـ aa. All rights reserved.
 //
 
+
 import UIKit
 
-class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSource {
-    
-    
+class DisplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewDataSource {
     
     @IBOutlet weak var TableViewData: UITableView!
+    
     @IBOutlet weak var menuBarItem: UIBarButtonItem!
-
-    var orderList = [Orders()]
+    
+    var charity=Charities()
+    
     var view1 = UIView()
-    var type=0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         if revealViewController() != nil {
             print("revealViewController not null ")
-            
             menuBarItem.target = self.revealViewController()
             menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
             
             self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
         }
+        
         InitializeSpinner()
         startLoding()
         getJsonFromUrl()
@@ -38,47 +40,45 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         
-        print("count return : \(orderList.count)")
+        print("count return : \(donationList.count)")
         stopLoding()
         
-        return self.orderList.count
+        return self.donationList.count
         //                return 10
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let cell = self.TableViewData.dequeueReusableCell(withIdentifier: "cellData", for: indexPath) as! DisplayOrdersCell
+        let cell = self.TableViewData.dequeueReusableCell(withIdentifier: "CellData", for: indexPath) as! MyOrders_DonationsCell
+        
+        var donation : Donations = self.donationList[indexPath.row]
         
         
+        print("donation.name : \(donation.name)")
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
         
+        cell.name.text = donation.name
+        cell.descriptions.text = donation.description
+        cell.UploadDate.text = (dateFormatter.date(from: "donation.DateOfUpload" ))?.description
+        cell.images.image = base64Convert(base64String: donation.image)
         
-        //        cell.backgroundColor = .clear
+        var orderCell : NeedyOrders = NeedyOrders()
+        orderCell  = self.OrdersList[indexPath.row]
         
-        
-        
-        var order : Orders = self.orderList[indexPath.row]
-        
-        
-        print("order.name : \(order.Name_of_Needy)")
-        
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy'-'MM'-'dd'/'HH':'mm"
-        var stringDate = ""
-        
-        if let index = (order.Date_of_Add ).range(of: "T")?.lowerBound {
-            let substring = (order.Date_of_Add )[..<index]
-            
-            stringDate = String(substring)
+        // let orders = NeedyOrders()
+        print("OrderUser_status : \(orderCell.OrderUser_status)")
+        if orderCell.OrderUser_status == 1 {
+            cell.status.text = "قيد الانتظار"
         }
-        
-        cell.Name.text = order.Name_of_Needy
-        cell.OrderOfNeedy.text = order.Order_the_Needy
-        cell.Address.text = order.Address
-        cell.ContactWay.text = order.Contact_Way
-        cell.DateOfUpload.text = stringDate
-        
+        else if orderCell.OrderUser_status == 2 {
+            cell.status.text = "مقبول"
+        }
+        else if orderCell.OrderUser_status == 3 {
+            cell.status.text = "مرفوض"
+        }
         
         let separatorLine = UIImageView.init(frame: CGRect(x: 4, y: 0, width: cell.frame.width - 8, height: 2))
         separatorLine.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 250/255, alpha: 100)
@@ -88,16 +88,24 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
         
     }
     
- 
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let item = donationList[indexPath.row]
+        print("##item : \(donationList[indexPath.row])")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "segueMMyOrders") as! MyOrdersDetailsaVC
+        vc.donationId = item.DonationId
+        self.present(vc, animated: true, completion: nil)
+        
+        
+    }
     
     func getJsonFromUrl(){
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getAllOrders")!
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getMyOrder?Id_Needy="+UserInfo.userId.description)!
         
-        //+UserInfo.userId.description)! // Enter URL Here
+        
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open")
@@ -106,21 +114,30 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                     let blogs = json["result"] as? [[String: Any]] {
                     //                    print("##URLSession blogs ")
-                    self.orderList.removeAll()
+                    self.donationList.removeAll()
+                    self.OrdersList.removeAll()
                     for blog in blogs {
-                        var orders=Orders()
-                        orders = orders.getOrdersData(dataJson: blog)
+                        //var donation=Donations()
+                        self.donation = self.donation.getDonationsData(dataJson: blog)
                         //                        if let name = blog["Name"] as? String {print("##Name : \(name)")}
                         
-                        print("##OrderId = \(orders.OrderId)")
-                        print("##Name_of_Needy = \(orders.Name_of_Needy)")
-                        print("##Order_the_Needy = \(orders.Order_the_Needy)")
-                        print("##Address = \(orders.Address)")
-                        print("##Date Contact_Way Upload = \(orders.Contact_Way)")
-                        print("##Date_of_Add = \(orders.Date_of_Add)")
+                        print("##donationId = \(self.donation.DonationId)")
+                        print("##name = \(self.donation.name)")
+                        print("##OrderStatus = \(self.donation.OrderStatus)")
+                        print("##description = \(self.donation.description)")
+                        
+                        if var ordersJson = blog["needy"] as? [String: Any] {
+                            // var orders = NeedyOrders()
+                            
+                            self.order = self.order.getOrdersData(dataJson: ordersJson)
+                            print("OrderUser_status json: \(ordersJson)")
+                            self.OrdersList.append(self.order)
+                        }
                         
                         
-                        self.orderList.append(orders)
+                        
+                        self.donationList.append(self.donation)
+                        
                     }
                 }
             } catch {
@@ -185,7 +202,7 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
     func base64Convert(base64String: String?) -> UIImage{
         //        print("base64String : \(base64String)")
         if (base64String?.isEmpty)! {
-            return UIImage(named: "")!
+            return UIImage(named: "brwsar_iconin.png")!
         }else {
             // !!! Separation part is optional, depends on your Base64String !!!
             let temp = base64String?.components(separatedBy: ",")
@@ -195,5 +212,7 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
         }
     }
 }
+
+
 
 

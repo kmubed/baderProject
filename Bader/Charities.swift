@@ -16,7 +16,7 @@ class Charities {
     var Coordinate_X : Double = 0.0
     var Coordinate_Y : Double = 0.0
     var Phone : String = ""
-    var city : String = ""
+    var City : String = ""
     var working_hours_week_daysPM : String = ""
     var working_hours_week_daysAM : String = ""
     var working_hours_Friday : String = ""
@@ -31,7 +31,7 @@ class Charities {
         charity.Coordinate_X = dataJson["Coordinate_X"] as? Double ?? 0.0
         charity.Coordinate_Y = dataJson["Coordinate_Y"] as? Double ?? 0.0
         charity.Phone = dataJson["Phone"] as? String ?? ""
-        charity.city = dataJson["city"] as? String ?? ""
+        charity.City = dataJson["City"] as? String ?? ""
         charity.working_hours_week_daysPM = dataJson["working_hours_week_daysPM"] as? String ?? ""
         charity.working_hours_week_daysAM = dataJson["working_hours_week_daysAM"] as? String ?? ""
         charity.working_hours_Saturday = dataJson["working_hours_Saturday"] as? String ?? ""

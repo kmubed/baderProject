@@ -1,54 +1,98 @@
 //
-//  DisplayCharityVC.swift
+//  DicplayCharitiesVC.swift
 //  Bader
 //
-//  Created by AMJAD - on 2 جما٢، 1440 هـ.
+//  Created by AMJAD - on 14 رجب، 1440 هـ.
 //  Copyright © 1440 هـ aa. All rights reserved.
 //
 
 
 
-
 import UIKit
 
-class DisplayCharityVC: UIViewController {
-    
-    @IBOutlet weak var Name: UILabel!
-    @IBOutlet weak var Address: UILabel!
-    
-    
-    @IBOutlet weak var Saturday: UILabel!
-    @IBOutlet weak var Friday: UILabel!
-    @IBOutlet weak var SundayToThursdayAM: UILabel!
-    @IBOutlet weak var city: UILabel!
-    
-    @IBOutlet weak var SundayToThursday: UILabel!
-    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewDataSource {
 
-    var charity = Charities()
-    var view1 = UIView()
-  
+    @IBOutlet weak var TableViewData: UITableView!
     
+    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+    
+    
+    var charity = Charities()
+    var charirtyList = [Charities()]
+     
+  
+    var view1 = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         if revealViewController() != nil {
             print("revealViewController not null ")
-            
             menuBarItem.target = self.revealViewController()
             menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
             
             self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
         }
+        
+        InitializeSpinner()
+        startLoding()
         getJsonFromUrl()
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        
+        print("count return : \(charirtyList.count)")
+        stopLoding()
+        
+        return self.charirtyList.count
+        //                return 10
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        let cell = self.TableViewData.dequeueReusableCell(withIdentifier: "CellData1", for: indexPath) as! CharityCell
+        
+        var charity : Charities = self.charirtyList[indexPath.row]
+        
+        
+        print("charity.Name : \(charity.Name)")
+         print("charity.city : \(charity.City)")
+       
+        
+        cell.Name.text = charity.Name
+        cell.city.text = charity.City
+    
+        
+        let separatorLine = UIImageView.init(frame: CGRect(x: 4, y: 0, width: cell.frame.width - 8, height: 2))
+        separatorLine.backgroundColor = UIColor.init(red: 255/255, green: 255/255, blue: 250/255, alpha: 100)
+        cell.addSubview(separatorLine)
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let item = charirtyList[indexPath.row]
+        print("##item : \(charirtyList[indexPath.row])")
+        let vc = self.storyboard?.instantiateViewController(withIdentifier: "seguecharity") as! DisplayDetailsCharityVC
+        vc.charityId = item.CharityId
+        self.present(vc, animated: true, completion: nil)
+        
+        
     }
     
     func getJsonFromUrl(){
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getCharityDetails?Charity_ID=7")! // Enter URL Here
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getallCharities")!
+        
+        
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open")
@@ -57,19 +101,21 @@ class DisplayCharityVC: UIViewController {
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                     let blogs = json["result"] as? [[String: Any]] {
                     //                    print("##URLSession blogs ")
+                    self.charirtyList.removeAll()
                     
                     for blog in blogs {
-                        self.charity=Charities()
+                        //var donation=Donations()
                         self.charity = self.charity.getCharitiesData(dataJson: blog)
+                        //                        if let name = blog["Name"] as? String {print("##Name : \(name)")}
                         
-                     
-                        print("##Name = \(self.charity.Name)")
-                        print("##Address = \(self.charity.Address)")
-                        print("##working_hours_week_daysAM = \(self.charity.working_hours_week_daysAM)")
-                        print("##working_hours_week_daysPM = \(self.charity.working_hours_week_daysPM)")
-                        print("##working_hours_Friday = \(self.charity.working_hours_Friday)")
-                        print("##working_hours_Saturday = \(self.charity.working_hours_Saturday)")
-                        print("##user city = \(self.charity.city)")
+                        print("##CharityId = \(self.charity.CharityId)")
+                        print("##charity.Name = \(self.charity.Name)")
+                         print("##charity.City) = \(self.charity.City)")
+                       
+                        
+                    
+                        
+                        self.charirtyList.append(self.charity)
                         
                     }
                 }
@@ -91,14 +137,8 @@ class DisplayCharityVC: UIViewController {
         //looing through all the elements of the array
         DispatchQueue.main.async {
             
-            self.Name.text = self.charity.Name
-            self.Address.text = self.charity.Address
-            self.SundayToThursday.text = self.charity.working_hours_week_daysPM
-            self.SundayToThursdayAM.text = self.charity.working_hours_week_daysAM
-            self.Saturday.text = self.charity.working_hours_Saturday
-            self.Friday.text = self.charity.working_hours_Friday
-            self.city.text = self.charity.city
-            
+            self.TableViewData.dataSource=self
+            self.TableViewData.reloadData()
             
         }
     }
@@ -150,7 +190,8 @@ class DisplayCharityVC: UIViewController {
             return decodedimage!
         }
     }
-    
-    
 }
+
+
+
 

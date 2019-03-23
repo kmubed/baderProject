@@ -224,6 +224,7 @@ extension UIImage {
             self.clipsToBounds = true
         } else {
             self.layer.cornerRadius = 0
+            
         }
     }
     

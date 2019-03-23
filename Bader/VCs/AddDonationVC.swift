@@ -52,6 +52,7 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
             // TODO: Your implementation for selection
             self.donationType.setTitle(selctedText, for: .normal)
             self.donationType.tag = atIndex
+            
         }
     }
  
