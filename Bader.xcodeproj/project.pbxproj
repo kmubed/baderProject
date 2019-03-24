@@ -35,6 +35,10 @@
 		AB60C8D82203812000942930 /* Orders.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB60C8D72203812000942930 /* Orders.swift */; };
 		AB6AB08D2207F3F7009A6802 /* MyOrders_DonationsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6AB08C2207F3F7009A6802 /* MyOrders_DonationsCell.swift */; };
 		AB7BB933220C89C200F86AE7 /* DisplayOrdersVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7BB932220C89C200F86AE7 /* DisplayOrdersVC.swift */; };
+		AB82CF0B2246D78800CC307D /* Lalezar-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB82CF092246D78800CC307D /* Lalezar-Regular.ttf */; };
+		AB82CF0C2246D78800CC307D /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AB82CF0A2246D78800CC307D /* OFL.txt */; };
+		AB82CF0F2246DBCD00CC307D /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = AB82CF0D2246DBCD00CC307D /* OFL.txt */; };
+		AB82CF102246DBCD00CC307D /* Jomhuria-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AB82CF0E2246DBCD00CC307D /* Jomhuria-Regular.ttf */; };
 		AB937308220F421A0016EEDC /* DeliveryPageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB937307220F421A0016EEDC /* DeliveryPageVC.swift */; };
 		AB93730A220F424E0016EEDC /* DeliveryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB937309220F424E0016EEDC /* DeliveryTableViewCell.swift */; };
 		ABD183E021F64BF900B73B4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD183DF21F64BF900B73B4B /* AppDelegate.swift */; };
@@ -85,6 +89,10 @@
 		AB60C8D72203812000942930 /* Orders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orders.swift; sourceTree = "<group>"; };
 		AB6AB08C2207F3F7009A6802 /* MyOrders_DonationsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrders_DonationsCell.swift; sourceTree = "<group>"; };
 		AB7BB932220C89C200F86AE7 /* DisplayOrdersVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayOrdersVC.swift; sourceTree = "<group>"; };
+		AB82CF092246D78800CC307D /* Lalezar-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lalezar-Regular.ttf"; sourceTree = "<group>"; };
+		AB82CF0A2246D78800CC307D /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		AB82CF0D2246DBCD00CC307D /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OFL.txt; path = "../../../Lalezar/fonts-2/Jomhuria/OFL.txt"; sourceTree = "<group>"; };
+		AB82CF0E2246DBCD00CC307D /* Jomhuria-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jomhuria-Regular.ttf"; sourceTree = "<group>"; };
 		AB937307220F421A0016EEDC /* DeliveryPageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryPageVC.swift; sourceTree = "<group>"; };
 		AB937309220F424E0016EEDC /* DeliveryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryTableViewCell.swift; sourceTree = "<group>"; };
 		ABD183DC21F64BF900B73B4B /* Bader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +142,17 @@
 			path = XFile;
 			sourceTree = "<group>";
 		};
+		AB82CF082246D76E00CC307D /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				AB82CF092246D78800CC307D /* Lalezar-Regular.ttf */,
+				AB82CF0E2246DBCD00CC307D /* Jomhuria-Regular.ttf */,
+				AB82CF0D2246DBCD00CC307D /* OFL.txt */,
+				AB82CF0A2246D78800CC307D /* OFL.txt */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		ABD183D321F64BF900B73B4B = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +172,7 @@
 		ABD183DE21F64BF900B73B4B /* Bader */ = {
 			isa = PBXGroup;
 			children = (
+				AB82CF082246D76E00CC307D /* fonts */,
 				62251DB92204C8C80088A154 /* image */,
 				AB41F32221F8D4A700474F07 /* XFile */,
 				ABD183DF21F64BF900B73B4B /* AppDelegate.swift */,
@@ -271,10 +291,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB82CF0F2246DBCD00CC307D /* OFL.txt in Resources */,
+				AB82CF0C2246D78800CC307D /* OFL.txt in Resources */,
 				62251DBB2204C8E70088A154 /* brwsar_iconin.png in Resources */,
 				ABD183EA21F64BFA00B73B4B /* LaunchScreen.storyboard in Resources */,
 				ABD183E721F64BFA00B73B4B /* Assets.xcassets in Resources */,
 				ABD183E521F64BF900B73B4B /* Main.storyboard in Resources */,
+				AB82CF102246DBCD00CC307D /* Jomhuria-Regular.ttf in Resources */,
+				AB82CF0B2246D78800CC307D /* Lalezar-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
