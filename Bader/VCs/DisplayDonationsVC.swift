@@ -37,8 +37,6 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
         InitializeSpinner()
         startLoding()
         var type=0
-       // self.donationType.tag = 0
-        //print("ss" , donationType.tag)
         getJsonFromUrl()
         
     }
@@ -110,7 +108,7 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
     func getJsonFromUrl(){
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
-        
+        self.donationList.removeAll()
         
         
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getAllDonations?type=\(type)&status=2")!

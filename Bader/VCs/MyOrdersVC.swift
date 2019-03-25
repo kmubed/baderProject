@@ -105,6 +105,7 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
+        self.donationList.removeAll()
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getMyOrder?Id_Needy="+UserInfo.userId.description)!
         
         

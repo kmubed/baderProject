@@ -50,12 +50,16 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
         
         print("count return : \(needyList.count)")
         stopLoding()
-        if UserList.count == 0 {
+        var index : Int = 0
+        if UserList.count == 0 ||  needyList.count == 0{
             self.user = Users()
             user.Fname = "لا يوجد متقدمين حاليا"
             UserList.append(user)
+            index = 0
+        }else{
+            index = UserList.count
         }
-        return self.UserList.count
+        return index
         //                return 10
     }
     
@@ -161,7 +165,7 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getNeedyNames?Donation_id=14")! // Enter URL Here
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getNeedyNames?Donation_id=" + donation.DonationId.description)! // Enter URL Here
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open")

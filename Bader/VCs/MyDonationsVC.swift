@@ -90,6 +90,8 @@ class MyDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSo
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
+        self.donationList.removeAll()
+        
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/MyDonations?User_Id="+UserInfo.userId.description)!
         
         //+UserInfo.userId.description)! // Enter URL Here

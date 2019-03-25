@@ -142,6 +142,8 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
+        self.donationList.removeAll()
+        
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/DeliverPage" )!
         
         //+UserInfo.userId.description)! // Enter URL Here
