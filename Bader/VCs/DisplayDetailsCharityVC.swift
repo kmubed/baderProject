@@ -48,6 +48,7 @@ class DisplayDetailsCharityVC: UIViewController {
         print("##performPostRequest open")
         
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getCharityDetails?Charity_ID=" + charity.CharityId.description)! // Enter URL Here
+        print("##URLSession blogs = \(url)")
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open")
@@ -55,7 +56,7 @@ class DisplayDetailsCharityVC: UIViewController {
                 if let data = data,
                     let json = try JSONSerialization.jsonObject(with: data) as? [String: Any],
                     let blogs = json["result"] as? [[String: Any]] {
-                    //                    print("##URLSession blogs ")
+                    
                     
                     for blog in blogs {
                         self.charity=Charities()
@@ -89,6 +90,14 @@ class DisplayDetailsCharityVC: UIViewController {
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
+            
+            self.Name.isHidden = false
+            self.Address.isHidden = false
+            self.SundayToThursday.isHidden = false
+            self.SundayToThursdayAM.isHidden = false
+            self.Saturday.isHidden = false
+            self.Friday.isHidden = false
+             self.city.isHidden = false
             
             self.Name.text = self.charity.Name
             self.Address.text = self.charity.Address

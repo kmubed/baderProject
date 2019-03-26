@@ -81,8 +81,9 @@ class MyDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSo
         let item = donationList[indexPath.row]
         print("##item : \(donationList[indexPath.row])")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "segueMyDonation") as! MyDonationsDetailsVC
+         self.navigationController?.pushViewController(vc, animated: true)
         vc.donation = item
-        self.present(vc, animated: true, completion: nil)
+      //  self.present(vc, animated: true, completion: nil)
         
     }
     

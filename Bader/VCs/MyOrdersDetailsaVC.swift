@@ -21,7 +21,7 @@ class MyOrdersDetailsaVC: UIViewController {
     @IBOutlet weak var status: UILabel!
     @IBOutlet weak var ButtonDelivary: UIButton!
     
-    @IBOutlet weak var menuBarItem: UIBarButtonItem!
+ //   @IBOutlet weak var menuBarItem: UIBarButtonItem!
 
     var donation = Donations()
     var user = Users()
@@ -31,14 +31,7 @@ class MyOrdersDetailsaVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if revealViewController() != nil {
-            print("revealViewController not null ")
-            
-            menuBarItem.target = self.revealViewController()
-            menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
-            
-            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
-        }
+
         getJsonFromUrl()
         // Do any additional setup after loading the view.
     }
@@ -47,12 +40,28 @@ class MyOrdersDetailsaVC: UIViewController {
     
     @IBAction func DeliveryButton(_ sender: UIButton) {
         UpdateToDelivery()
+        let alert = UIAlertController(title: "تم إضافة طلبك الى صفحة التوصيل", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: { action in
+            let goToDeliveryPage = self.storyboard?.instantiateViewController(withIdentifier: "toDeliveryPage") as! DeliveryPageVC
+            self.navigationController?.pushViewController(goToDeliveryPage, animated: true)
+        }))
+        self.present(alert, animated: true)
+        
+     
     }
     
  
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
+            
+            self.donationName.isHidden = false
+            self.donationUserName.isHidden = false
+            self.donationUserEmail.isHidden = false
+            self.donationImage.isHidden = false
+            self.donationDesc.isHidden = false
+            self.donationUserCity.isHidden = false
             
             self.donationName.text = self.donation.name
             self.donationUserName.text = self.user.Fname + " " + self.user.Lname

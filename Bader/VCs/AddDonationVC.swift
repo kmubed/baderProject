@@ -145,7 +145,10 @@ class AddDonationVC: UIViewController , UINavigationControllerDelegate, UIImageP
                 if(blogs ?? 0 > 0){
                     let alert = UIAlertController(title: "تم إضافة تبرعك إلى صفحة التبرعات", message: "", preferredStyle: .alert)
                     
-                    alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
+                    alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: { action in
+                        let goToDonationsPage = self.storyboard?.instantiateViewController(withIdentifier: "ToDonationsPage") as! DisplayDonationsVC
+                        self.navigationController?.pushViewController(goToDonationsPage, animated: true)
+                    }))
                     
                     self.present(alert, animated: true)
                 }

@@ -19,7 +19,7 @@ class DonationDetailsVC: UIViewController {
     
     @IBAction func OrderButton(_ sender: UIButton) {
         getJFUInsirtNewRequest()
-        let alert = UIAlertController(title: "تم إضافة طلبك الى صفحة طلباتي", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "يرجى متابعة حالة طلبك في صفحة طلباتي", message: "", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
         self.present(alert, animated: true)
@@ -33,6 +33,7 @@ class DonationDetailsVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         print("##viewDidLoad open")
         getJsonFromUrl()
         // Do any additional setup after loading the view.
@@ -90,6 +91,13 @@ class DonationDetailsVC: UIViewController {
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
+            
+            self.donationName.isHidden = false
+            self.donationUserName.isHidden = false
+            self.donationUserEmail.isHidden = false
+            self.donationImage.isHidden = false
+            self.donationDesc.isHidden = false
+            self.donationUserCity.isHidden = false
             
             self.donationName.text = self.donation.name
             self.donationUserName.text = self.user.Fname + " " + self.user.Lname

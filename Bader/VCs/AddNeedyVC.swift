@@ -33,8 +33,10 @@ class AddNeedyVC : UIViewController , UITextFieldDelegate
 //
         let alert = UIAlertController(title: "تم إضافةالمستحق إلى صفحة الطلبات ", message: "", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: nil))
-        
+        alert.addAction(UIAlertAction(title: "حسناً", style: .default, handler: { action in
+            let goToDisplayOrders = self.storyboard?.instantiateViewController(withIdentifier: "ToDisplayOrders") as! DisplayOrdersVC
+            self.navigationController?.pushViewController(goToDisplayOrders, animated: true)
+        }))
         self.present(alert, animated: true)
    }
     

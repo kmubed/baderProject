@@ -24,6 +24,9 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        InitializeSpinner()
+        startLoding()
+        
         if revealViewController() != nil {
             print("revealViewController not null ")
             
@@ -33,9 +36,7 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
             self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
         }
         
-        
-        InitializeSpinner()
-        startLoding()
+
         var type=0
         getJsonFromUrl()
         
@@ -87,8 +88,10 @@ class DisplayDonationsVC : UIViewController , UITableViewDelegate , UITableViewD
         let item = donationList[indexPath.row]
         print("##item : \(donationList[indexPath.row])")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "segue") as! DonationDetailsVC
+        self.navigationController?.pushViewController(vc, animated: true)
+        
         vc.donationId = item.DonationId
-        self.present(vc, animated: true, completion: nil)
+      // self.present(vc, animated: true, completion: nil)
         
     }
     

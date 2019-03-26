@@ -77,6 +77,13 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
             cell.deliveryButton.isHidden = false
             
         }
+        
+        cell.DonationName.isHidden = false
+        cell.NeedyName.isHidden = false
+        cell.Email.isHidden = false
+        cell.City.isHidden = false
+       
+        
         cell.DonationName.text = self.donation.name
         cell.NeedyName.text = self.user.Fname + " " + self.user.Lname
         cell.Email.text = self.user.email

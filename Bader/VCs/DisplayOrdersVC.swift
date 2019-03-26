@@ -50,14 +50,6 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
     {
         let cell = self.TableViewData.dequeueReusableCell(withIdentifier: "cellData", for: indexPath) as! DisplayOrdersCell
         
-        
-        
-        
-        
-        //        cell.backgroundColor = .clear
-        
-        
-        
         var order : Orders = self.orderList[indexPath.row]
         
         
@@ -72,6 +64,12 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
             
             stringDate = String(substring)
         }
+        
+        cell.Name.isHidden = false
+        cell.OrderOfNeedy.isHidden = false
+        cell.Address.isHidden = false
+        cell.ContactWay.isHidden = false
+        cell.DateOfUpload.isHidden = false
         
         cell.Name.text = order.Name_of_Needy
         cell.OrderOfNeedy.text = order.Order_the_Needy
@@ -181,19 +179,7 @@ class DisplayOrdersVC : UIViewController , UITableViewDelegate , UITableViewData
         view1.tag = 1000
     }
     
-    
-    func base64Convert(base64String: String?) -> UIImage{
-        //        print("base64String : \(base64String)")
-        if (base64String?.isEmpty)! {
-            return UIImage(named: "")!
-        }else {
-            // !!! Separation part is optional, depends on your Base64String !!!
-            let temp = base64String?.components(separatedBy: ",")
-            let dataDecoded : Data = Data(base64Encoded: temp![0], options: .ignoreUnknownCharacters)!
-            let decodedimage = UIImage(data: dataDecoded)
-            return decodedimage!
-        }
-    }
+
 }
 
 

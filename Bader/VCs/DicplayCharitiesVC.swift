@@ -62,6 +62,8 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
         print("charity.Name : \(charity.Name)")
          print("charity.city : \(charity.City)")
        
+        cell.Name.isHidden = false
+        cell.city.isHidden = false
         
         cell.Name.text = charity.Name
         cell.city.text = charity.City
@@ -80,8 +82,9 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
         let item = charirtyList[indexPath.row]
         print("##item : \(charirtyList[indexPath.row])")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "seguecharity") as! DisplayDetailsCharityVC
+        self.navigationController?.pushViewController(vc, animated: true)
         vc.charityId = item.CharityId
-        self.present(vc, animated: true, completion: nil)
+       // self.present(vc, animated: true, completion: nil)
         
         
     }
@@ -178,18 +181,7 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
     }
     
     
-    func base64Convert(base64String: String?) -> UIImage{
-        //        print("base64String : \(base64String)")
-        if (base64String?.isEmpty)! {
-            return UIImage(named: "brwsar_iconin.png")!
-        }else {
-            // !!! Separation part is optional, depends on your Base64String !!!
-            let temp = base64String?.components(separatedBy: ",")
-            let dataDecoded : Data = Data(base64Encoded: temp![0], options: .ignoreUnknownCharacters)!
-            let decodedimage = UIImage(data: dataDecoded)
-            return decodedimage!
-        }
-    }
+  
 }
 
 

@@ -95,8 +95,10 @@ class MyOrdersVC : UIViewController , UITableViewDelegate , UITableViewDataSourc
         let item = donationList[indexPath.row]
         print("##item : \(donationList[indexPath.row])")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "segueMMyOrders") as! MyOrdersDetailsaVC
+        
+        self.navigationController?.pushViewController(vc, animated: true)
         vc.donationId = item.DonationId
-        self.present(vc, animated: true, completion: nil)
+       // self.present(vc, animated: true, completion: nil)
         
         
     }
