@@ -45,6 +45,7 @@ class DonationDetailsVC: UIViewController {
         print("##performPostRequest open")
         
         let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/DonationDetails?Donation_id="+donationId.description)! // Enter URL Here
+      
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open")

@@ -31,14 +31,7 @@ class DisplayDetailsCharityVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if revealViewController() != nil {
-//            print("revealViewController not null ")
-//
-//            menuBarItem.target = self.revealViewController()
-//            menuBarItem.action = #selector(SWRevealViewController().revealToggle(_:))
-//
-//            self.view.addGestureRecognizer(revealViewController().panGestureRecognizer())
-//        }
+
         getJsonFromUrl()
         // Do any additional setup after loading the view.
     }
@@ -47,7 +40,7 @@ class DisplayDetailsCharityVC: UIViewController {
         print("##getJsonFromUrl open")
         print("##performPostRequest open")
         
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getCharityDetails?Charity_ID=" + charity.CharityId.description)! // Enter URL Here
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/getCharityDetails?Charity_ID=" + charityId.description)! // Enter URL Here
         print("##URLSession blogs = \(url)")
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in

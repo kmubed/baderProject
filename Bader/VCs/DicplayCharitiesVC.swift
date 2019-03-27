@@ -84,6 +84,7 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "seguecharity") as! DisplayDetailsCharityVC
         self.navigationController?.pushViewController(vc, animated: true)
         vc.charityId = item.CharityId
+        
        // self.present(vc, animated: true, completion: nil)
         
         
