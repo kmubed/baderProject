@@ -822,8 +822,8 @@
                                     <action selector="changeType:" destination="FAN-nM-1ld" eventType="touchUpInside" id="HKR-fN-7je"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="image" translatesAutoresizingMaskIntoConstraints="NO" id="teD-PX-ml0">
-                                <rect key="frame" x="33" y="336" width="317" height="239"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="add-2" translatesAutoresizingMaskIntoConstraints="NO" id="teD-PX-ml0">
+                                <rect key="frame" x="34" y="336" width="317" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="caret-down" translatesAutoresizingMaskIntoConstraints="NO" id="ZFy-Dl-imq" customClass="XImageView" customModule="Bader" customModuleProvider="target">
@@ -1382,6 +1382,9 @@
                                         <color key="value" red="0.35686274509999999" green="0.61568627450000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="Call:" destination="S9W-Zv-sbn" eventType="touchUpInside" id="uMb-4u-Fnw"/>
+                                </connections>
                             </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXQ-bd-oHx">
                                 <rect key="frame" x="16" y="379" width="170" height="21"/>
@@ -1580,14 +1583,14 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="التبرع" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFg-io-ndr">
-                                                    <rect key="frame" x="99" y="18" width="247" height="21"/>
+                                                    <rect key="frame" x="93" y="18" width="247" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="highlightedColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="اسم المتبرع" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fDE-8z-Tgb">
-                                                    <rect key="frame" x="61" y="49" width="187" height="21"/>
+                                                    <rect key="frame" x="64" y="49" width="187" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1599,7 +1602,7 @@
                                                     <state key="normal" title="حذف" image="delete"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="اسم المتبرع : " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N1a-6u-XIS">
-                                                    <rect key="frame" x="254" y="47" width="90" height="20"/>
+                                                    <rect key="frame" x="256" y="47" width="90" height="20"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -2915,11 +2918,11 @@
     </scenes>
     <resources>
         <image name="add" width="30" height="30"/>
+        <image name="add-2" width="127" height="95"/>
         <image name="back" width="16" height="16"/>
         <image name="bars" width="30" height="30"/>
         <image name="caret-down" width="32" height="32"/>
         <image name="delete" width="32" height="32"/>
-        <image name="image" width="128" height="128"/>
         <image name="menublack32x32" width="32" height="32"/>
         <image name="personal-icon-12.jpg" width="256" height="256"/>
         <image name="tree-596x510" width="298" height="255"/>
@@ -2933,6 +2936,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="opv-ee-Ic4"/>
         <segue reference="ITO-hJ-A87"/>
-        <segue reference="tiL-sv-5fF"/>
+        <segue reference="xBe-jj-yTg"/>
     </inferredMetricsTieBreakers>
 </document>
