@@ -28,7 +28,8 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        InitializeSpinner()
+        startLoding()
         var stringDate = ""
         
         if let index = (donation.DateOfUpload ).range(of: "T")?.lowerBound {
@@ -79,22 +80,22 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
         }else{acceptStets = false}
         
         switch needyCell.OrderUser_status {
-        case 0:
+        case 1:
             acceptStets = false
-//            cell.NeedyStets.text = "تم القبول"
+  //          cell.NeedyStets.text = "تم القبول"
             cell.NeedyStets.isHidden=true
             cell.NeedyAcceptButton.isHidden = false
 
             break
             
-        case 1:
+        case 2:
             acceptStets = true
             cell.NeedyStets.text = "تم القبول"
             cell.NeedyStets.isHidden=false
             cell.NeedyAcceptButton.isHidden = true
             break
             
-        case 2:
+        case 3:
             cell.NeedyStets.text = "مرفوض"
             cell.NeedyStets.isHidden=false
             cell.NeedyAcceptButton.isHidden = true
@@ -226,7 +227,7 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
-            
+            self.stopLoding()
             self.TableViewNeedyOrder.dataSource=self
             self.TableViewNeedyOrder.reloadData()
             
@@ -256,7 +257,7 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
         
         view1 = UIView(frame: CGRect(x: 0 , y: 0 , width: 250 , height: 50))
         
-        view1.backgroundColor = UIColor.init(red: 119/255, green: 154/255, blue: 218/255, alpha: 1)
+        view1.backgroundColor = UIColor.lightGray
         view1.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 10, y: 0, width: 50, height: 50))
         wait.color = UIColor.black

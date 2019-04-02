@@ -31,7 +31,8 @@ class MyOrdersDetailsaVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        InitializeSpinner()
+        startLoding()
         getJsonFromUrl()
         // Do any additional setup after loading the view.
     }
@@ -47,15 +48,14 @@ class MyOrdersDetailsaVC: UIViewController {
             self.navigationController?.pushViewController(goToDeliveryPage, animated: true)
         }))
         self.present(alert, animated: true)
-        
-     
+
     }
     
  
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
-            
+            self.stopLoding()
             self.donationName.isHidden = false
             self.donationUserName.isHidden = false
             self.donationUserEmail.isHidden = false
@@ -87,9 +87,6 @@ class MyOrdersDetailsaVC: UIViewController {
         }
     }
     
-    
-    
-    
     func startLoding(){
         self.view.addSubview(view1)
     }
@@ -107,7 +104,7 @@ class MyOrdersDetailsaVC: UIViewController {
         
         view1 = UIView(frame: CGRect(x: 0 , y: 0 , width: 250 , height: 50))
         
-        view1.backgroundColor = UIColor.init(red: 119/255, green: 154/255, blue: 218/255, alpha: 1)
+        view1.backgroundColor = UIColor.lightGray
         view1.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 10, y: 0, width: 50, height: 50))
         wait.color = UIColor.black
@@ -209,13 +206,7 @@ class MyOrdersDetailsaVC: UIViewController {
                             self.user = self.user.getUsersData(dataJson: userList)
                             
                         }
-//                        print("##donationId = \(self.donation.DonationId)")
-//                        print("##name = \(self.donation.name)")
-//                        print("##OrderStatus = \(self.donation.OrderStatus)")
-//                        print("##description = \(self.donation.description)")
-//                        print("##user Fname = \(self.user.Fname)")
-//                        print("##user mail = \(self.user.email)")
-//                        print("##user city = \(self.user.city)")
+
                         
                     }
                 }
@@ -229,10 +220,8 @@ class MyOrdersDetailsaVC: UIViewController {
             
         }
         task.resume()
-        
-        
+
     }
-    
-    
+
 }
 

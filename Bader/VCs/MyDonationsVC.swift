@@ -39,7 +39,7 @@ class MyDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSo
     {
         
         print("count return : \(donationList.count)")
-        stopLoding()
+       
         
         return self.donationList.count
         //                return 10
@@ -136,7 +136,7 @@ class MyDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSo
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
-            
+            self.stopLoding()
             self.TableViewData.dataSource=self
             self.TableViewData.reloadData()
             
@@ -163,7 +163,7 @@ class MyDonationsVC : UIViewController , UITableViewDelegate , UITableViewDataSo
         
         view1 = UIView(frame: CGRect(x: 0 , y: 0 , width: 250 , height: 50))
         
-        view1.backgroundColor = UIColor.init(red: 119/255, green: 154/255, blue: 218/255, alpha: 1)
+        view1.backgroundColor = UIColor.lightGray
         view1.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 10, y: 0, width: 50, height: 50))
         wait.color = UIColor.black

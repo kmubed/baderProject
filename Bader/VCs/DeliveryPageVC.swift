@@ -106,11 +106,17 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
     
     @IBAction func AcceptDelivery(_ sender: UIButton) {
         print("##AcceptNeedy start")
-        donation = Donations()
-        let text : Int = Int((sender ).tag)
-        donation = donationList[text]
-        print("##AcceptNeedy Button :\(donation.DonationId)")
-        UpdateUserStatus(id: donation.DonationId)
+        let alert = UIAlertController(title: "هل أنت متأكد من قدرتك على توصيل هذا التبرع؟", message: "سيتم إزالة هذا التبرع من قائمة التبرعات عند تأكيد التوصيل", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: " تأكيد", style: .default, handler: { action in
+            self.donation = Donations()
+            let text : Int = Int((sender ).tag)
+            self.donation = self.donationList[text]
+            print("##AcceptNeedy Button :\(self.donation.DonationId)")
+            self.UpdateUserStatus(id: self.donation.DonationId)
+        }))
+        alert.addAction(UIAlertAction(title: "إلغاء", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
     }
     
     
@@ -229,7 +235,7 @@ class DeliveryPageVC : UIViewController , UITableViewDelegate , UITableViewDataS
         
         view1 = UIView(frame: CGRect(x: 0 , y: 0 , width: 250 , height: 50))
         
-        view1.backgroundColor = UIColor.init(red: 119/255, green: 154/255, blue: 218/255, alpha: 1)
+        view1.backgroundColor = UIColor.lightGray
         view1.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 10, y: 0, width: 50, height: 50))
         wait.color = UIColor.black

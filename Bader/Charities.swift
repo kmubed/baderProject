@@ -25,7 +25,7 @@ class Charities {
 
     func getCharitiesData( dataJson:[String: Any] ) -> (Charities) {
         let charity = Charities()
-        charity.CharityId = dataJson["CharityId"] as? Int ?? 0
+        charity.CharityId = dataJson["Charity_ID"] as? Int ?? 0
         charity.Name = dataJson["Name"] as? String ?? ""
         charity.Address = dataJson["Address"] as? String ?? ""
         charity.Coordinate_X = dataJson["Coordinate_X"] as? Double ?? 0.0

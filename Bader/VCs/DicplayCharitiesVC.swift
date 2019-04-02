@@ -45,8 +45,7 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
     {
         
         print("count return : \(charirtyList.count)")
-        stopLoding()
-        
+
         return self.charirtyList.count
         //                return 10
     }
@@ -82,9 +81,10 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
         let item = charirtyList[indexPath.row]
         print("##item : \(charirtyList[indexPath.row])")
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "seguecharity") as! DisplayDetailsCharityVC
-        self.navigationController?.pushViewController(vc, animated: true)
-        vc.charityId = item.CharityId
         
+        vc.charityId = item.CharityId
+         print("##item  charityId: \(item.CharityId)")
+        self.navigationController?.pushViewController(vc, animated: true)
        // self.present(vc, animated: true, completion: nil)
         
         
@@ -106,7 +106,6 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
                     let blogs = json["result"] as? [[String: Any]] {
                     //                    print("##URLSession blogs ")
                     self.charirtyList.removeAll()
-                    
                     for blog in blogs {
                         //var donation=Donations()
                         self.charity = self.charity.getCharitiesData(dataJson: blog)
@@ -140,7 +139,7 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
     func showNames(){
         //looing through all the elements of the array
         DispatchQueue.main.async {
-            
+            self.stopLoding()
             self.TableViewData.dataSource=self
             self.TableViewData.reloadData()
             
@@ -167,7 +166,7 @@ class DicplayCharitiesVC : UIViewController , UITableViewDelegate , UITableViewD
         
         view1 = UIView(frame: CGRect(x: 0 , y: 0 , width: 250 , height: 50))
         
-        view1.backgroundColor = UIColor.init(red: 119/255, green: 154/255, blue: 218/255, alpha: 1)
+        view1.backgroundColor = UIColor.lightGray
         view1.layer.cornerRadius = 10
         let wait = UIActivityIndicatorView(frame: CGRect(x: 10, y: 0, width: 50, height: 50))
         wait.color = UIColor.black

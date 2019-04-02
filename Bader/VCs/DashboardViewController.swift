@@ -12,10 +12,10 @@ class DashboardViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
        getJsonFromUrl()
     }
-
+  
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

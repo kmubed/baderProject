@@ -27,13 +27,15 @@ class DisplayDetailsCharityVC: UIViewController {
     var view1 = UIView()
     var charityId = 0;
   
-//    @IBAction func Call(_ sender: Any) {
-//        let number = "+9647503022330"
-//        let appURL = URL(string: "tel://\(number)")!
-//        let application = UIApplication.shared
-//        if application.canOpenURL(appURL) {
-//            UIApplication.shared.open(appURL , options: [:], completionHandler: nil)
-//    }
+    @IBAction func Call(_ sender: Any) {
+        print("phone : \(charity.Phone)")
+        let number =  self.charity.Phone
+        let appURL = URL(string: "tel://\(number)")!
+        let application = UIApplication.shared
+        if application.canOpenURL(appURL) {
+            UIApplication.shared.open(appURL , options: [:], completionHandler: nil)
+    }
+    }
     
     
     override func viewDidLoad() {
