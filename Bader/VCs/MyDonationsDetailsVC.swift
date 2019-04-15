@@ -127,15 +127,17 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
         needyOrder = NeedyOrders()
         let text : Int = Int((sender ).tag)
         needyOrder = needyList[text]
-        print("##AcceptNeedy Button :\(needyOrder.id)")
+        print("##AcceptNeedy Button :\(needyOrder.User_id)")
         UpdateUserStatus()
+        
     }
     
     func UpdateUserStatus () {
         print("##getJsonFromUrl open UpdateUserStatus")
         print("##performPostRequest open UpdateUserStatus")
 
-        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/updateWhenAccepteOne?User_Id=" + needyOrder.id.description + "&Donation_id=" + donationId.description)! // Enter URL Here
+        let url = URL(string: "http://amjadsufyani-001-site1.itempurl.com/api/values/updateWhenAccepteOne?User_Id=" + needyOrder.User_id.description + "&Donation_id=" + donation.DonationId.description)! // Enter URL Here
+        print("ID :\(url)")
         
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
             print("##URLSession open UpdateUserStatus")
@@ -156,6 +158,7 @@ class MyDonationsDetailsVC: UIViewController , UITableViewDelegate , UITableView
             print("##Error deserializing JSON: \(error)")
         }
 //        self.showNames()
+            self.getJsonFromUrl()
         
     }
     task.resume()
